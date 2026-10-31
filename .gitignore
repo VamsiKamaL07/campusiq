@@ -1,0 +1,12 @@
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+.venv/
+*.db
+backend/storage/
+.pytest_cache/
+.vercel/

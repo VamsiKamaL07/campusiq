@@ -1,0 +1,11 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+sqlalchemy>=2.0.30
+alembic>=1.13
+pydantic[email]>=2.7
+pydantic-settings>=2.3
+psycopg[binary]>=3.2
+firebase-admin>=6.5
+pytest>=8.2
+httpx>=0.27
+# Added in later milestones: celery, redis, pymupdf, pytesseract, google-genai, resend

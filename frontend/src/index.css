@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 248 250 252;
+    --foreground: 15 23 42;
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+    --primary: 37 99 235;
+    --primary-foreground: 255 255 255;
+    --secondary: 241 245 249;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    --border: 226 232 240;
+    --ring: 37 99 235;
+    --radius: 0.75rem;
+    --sidebar-width: 260px;
+  }
+
+  .dark {
+    --background: 9 17 32;
+    --foreground: 241 245 249;
+    --card: 15 25 44;
+    --card-foreground: 241 245 249;
+    --primary: 59 130 246;
+    --secondary: 30 41 59;
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
+    --border: 30 41 59;
+    --ring: 59 130 246;
+  }
+
+  * {
+    @apply border-slate-200 dark:border-slate-800;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface-muted text-navy-900 font-sans antialiased dark:bg-navy-950 dark:text-slate-100;
+    line-height: 1.6;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Glass morphism */
+  .glass {
+    @apply bg-white/70 dark:bg-navy-900/70 backdrop-blur-xl border border-white/30 dark:border-white/10;
+  }
+
+  .glass-dark {
+    @apply bg-navy-900/80 backdrop-blur-xl border border-white/10;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white dark:bg-navy-800 rounded-2xl shadow-card border border-slate-100 dark:border-slate-700/50;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-surface-subtle dark:bg-navy-800 hover:bg-slate-200 dark:hover:bg-navy-700 text-navy-900 dark:text-slate-100 font-semibold px-6 py-3 rounded-xl transition-all duration-200 border border-slate-200 dark:border-slate-600;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-surface-subtle dark:hover:bg-navy-800 text-navy-700 dark:text-slate-300 font-medium px-4 py-2 rounded-xl transition-all duration-200;
+  }
+
+  .btn-outline {
+    @apply border border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 font-semibold px-6 py-3 rounded-xl transition-all duration-200;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-blue {
+    @apply badge bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300;
+  }
+
+  .badge-green {
+    @apply badge bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300;
+  }
+
+  .badge-amber {
+    @apply badge bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300;
+  }
+
+  .badge-red {
+    @apply badge bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300;
+  }
+
+  .badge-cyan {
+    @apply badge bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300;
+  }
+
+  .badge-purple {
+    @apply badge bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300;
+  }
+
+  /* Form elements */
+  .input {
+    @apply w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-navy-800 text-navy-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+  }
+
+  .label {
+    @apply text-sm font-semibold text-navy-800 dark:text-slate-200 mb-1.5 block;
+  }
+
+  /* Navigation */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-700 dark:hover:text-primary-300 font-medium transition-all duration-200 cursor-pointer;
+  }
+
+  .nav-item-active {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 font-semibold transition-all duration-200;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply animate-pulse bg-slate-200 dark:bg-slate-700 rounded-xl;
+  }
+
+  /* Section utilities */
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-bold text-navy-900 dark:text-white;
+  }
+
+  .section-subtitle {
+    @apply text-slate-600 dark:text-slate-400 text-lg max-w-2xl;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-cyan-500;
+  }
+
+  /* Scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #e2e8f0 transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar { width: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 999px; }
+
+  /* AI glow effect */
+  .ai-glow {
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2), 0 0 24px rgba(37, 99, 235, 0.15);
+  }
+
+  /* Demo mode banner */
+  .demo-banner {
+    @apply fixed top-0 left-0 right-0 z-[999] bg-amber-500 text-white text-center text-xs font-semibold py-1.5;
+  }
+
+  /* Status dots */
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  /* Priority tag */
+  .priority-high { @apply badge-red; }
+  .priority-medium { @apply badge-amber; }
+  .priority-low { @apply badge-blue; }
+
+  /* Progress step */
+  .step-complete { @apply text-success; }
+  .step-running { @apply text-primary-600 animate-pulse; }
+  .step-pending { @apply text-slate-400; }
+  .step-error { @apply text-danger; }
+}
